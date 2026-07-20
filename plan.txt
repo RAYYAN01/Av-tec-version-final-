@@ -1,0 +1,130 @@
+Goal
+Convert the current single-page scrolling site into a clean, straightforward multi-page website while keeping the existing dark cinematic mood, colors, and premium feel. Add a light "Indian brand" touch, remove the News section, split the gallery into Images and Videos, and strengthen the proof-of-work story with reviews.
+Current State
+
+Single page (src/app/page.tsx, ~393 lines) with everything: 4 stacked hero videos, about, rental, sales, services, news, gallery, testimonials, contact.
+6 service detail pages already exist at /services/[slug] (audio, lighting, video, trussing, consultancy, installations) with rich content — but styled with inline styles, inconsistent with the rest.
+Theme in globals.css: dark navy (#060d18), crimson #cc0000, orange/saffron #e8930c, blue #1a6dff, Playfair Display headings + Inter body, GSAP/ScrollTrigger + Ukiyo parallax.
+Assets: 17 gallery images, 16 videos in /public/video, 3 logo files.
+No shared components — header/footer are duplicated inline.
+
+New Site Structure (6 pages)
+/                  Home
+/services          Services hub (+ existing /services/[slug] detail pages, restyled)
+/about             About Us
+/gallery           Gallery — Images & Videos tabs
+/our-work          Proof of Work + Client Reviews
+/contact           Contact
+
+News section: removed entirely (from page + nav + footer).
+Shared Components (new src/components/)
+1. SiteHeader.tsx — used on every page
+
+Logo on top, centered, bigger (~80–90px height, vs current 60px) with the nav menu bar directly beneath it — matching the requested hierarchy.
+Centered nav menu, bolder & more visible: larger font size (~0.95rem), heavier weight, brighter default color (near-white instead of muted), saffron/orange (--orange: #e8930c) active state and hover underline accent — matching existing palette.
+Active page highlighted based on current route (usePathname).
+Compact scrolled state (logo shrinks slightly, solid dark background) so it never collides with content.
+Mobile: hamburger opens a clean full-screen menu; body scroll locked while open (fixes interruption/collision issues).
+Social icons kept, moved into a subtle top-right corner strip (desktop) / inside mobile menu.
+
+2. SiteFooter.tsx — used on every page
+
+Same as current footer but with updated nav links (real page routes), news removed, and a small "Proudly Indian · Bengaluru · Since 1992" line with a thin tricolor accent rule (subtle Indian touch).
+
+3. PageHero.tsx
+
+Reusable page header: background image/video + gradient overlay + eyebrow + page title. Consistent top spacing below the fixed header — guarantees no header/content collision on any page.
+
+4. MediaLightbox.tsx
+
+Shared lightbox for images AND videos: dark overlay, large media, caption bar showing name/tools/service label, prev/next arrows, keyboard support (Esc/arrows), body scroll locked when open.
+For videos: renders a <video controls> player, preload="metadata", poster image, pauses on close.
+
+Page-by-Page Plan
+Home (/) — rewrite src/app/page.tsx
+Focused and short — no more endless scroll:
+
+Single hero (one video, not 4 stacked full-screen blocks) with headline + two CTAs ("Our Services", "See Our Work").
+Brief About teaser (2–3 lines + "Since 1992" stat row: years, events, cities) → link to /about.
+Services overview: 6 clean cards (Audio, Lighting, Video & LED, Trussing, Consultancy, Installations) each linking to its detail page.
+Featured work strip: 4–6 gallery thumbnails → link to /gallery.
+One testimonial highlight → link to /our-work.
+CTA band → link to /contact.
+Keep GSAP reveal animations but lighter (fewer full-screen videos = faster, smoother).
+
+Services (/services/page.tsx) — new hub page
+
+PageHero + intro line.
+Two clear divisions (matching the business): "Rental & Event Production" and "Sales, Installs & Consultancy".
+Under each division, service cards with visible subsections listed on the card (e.g. Audio card shows: Line Arrays · Monitors · Mixing Consoles · Wireless Mics) so clarity is immediate before clicking.
+Each card links to the existing /services/[slug] detail page.
+
+Service detail pages (/services/[slug]/page.tsx) — restyle, keep content
+
+Content (features, equipment lists, CTAs) is already excellent — keep it.
+Replace inline styles with proper CSS classes matching the theme; use shared SiteHeader/SiteFooter/PageHero.
+Add "Other Services" links at the bottom for easy navigation between services.
+
+About (/about/page.tsx) — new page
+
+PageHero (why-video.mp4 background).
+Story since 1992, the two business divisions, stats row, "what makes us different" points.
+Subtle Indian identity: "Proudly Indian" copy, Bengaluru roots, serving events across India — light touch only, no heavy pattern work.
+
+Gallery (/gallery/page.tsx) — new page with 2 sections
+
+Tabs: "Images" | "Videos" (URL-synced so it can be linked directly).
+Images tab: grid of the 17 gallery images. Hover shows the name label overlay; click/Enter opens MediaLightbox with the image full-size + name caption (e.g. "LED Wall — Corporate Launch"). Example labels written by me; structured as a simple data array so the user can easily update names later.
+Videos tab: grid of the 16 existing videos shown as poster thumbnails with a play badge (no autoplaying grid = optimized). Click opens the lightbox with a <video controls> player, preload="metadata" for fast page load. Same caption format.
+Media data lives in one file src/lib/media.ts (title + optional description per item) — easy for the user to edit later.
+
+Our Work (/our-work/page.tsx) — new "proof" page
+
+PageHero.
+Proof stats band: 30+ years, events delivered, cities covered, marquee equipment (D&B, DiGiCo, Robe, grandMA3...).
+Case-study style highlights: 3–4 cards (festival sound, LED wall launch, corporate conference, wedding production) using existing gallery images — repurposing the old "news" content as proof stories instead of news.
+Client reviews section: expand the existing 4 testimonials into a proper reviews grid (6 reviews with star ratings, name, role, event type). Example content, easy to edit.
+Trusted-by strip (client type labels) + CTA to contact.
+
+Contact (/contact/page.tsx) — new page
+
+Move the existing contact form (unchanged fields) into its own page with PageHero.
+Add contact info cards beside the form (phone, email, address, availability).
+
+Design / Theme Updates (globals.css)
+
+Keep all existing color variables and mood exactly — dark navy, crimson headings, saffron accents, blue buttons.
+Bolder menu styling using the existing saffron --orange as the strong nav accent color.
+Add a very subtle Indian touch:
+
+Thin tricolor (saffron/white-line/green) accent rule used sparingly (under the logo divider in footer, section divider style).
+"Proudly Indian · Since 1992" copy in footer/about.
+No heavy patterns — lighter than subtle, per user request.
+
+
+New CSS for: page hero, tabs, video cards, lightbox captions, reviews grid, restyled service detail pages.
+Clean up: remove news CSS, remove stacked-hero CSS, fix any overflow issues.
+
+UX Polish (no collisions / interruptions)
+
+Fixed header height accounted for on every page (consistent padding-top via PageHero).
+Body scroll lock when lightbox or mobile menu is open.
+Videos: preload="metadata" + posters, only one video plays at a time, pause on lightbox close.
+Keyboard accessibility: Esc closes, arrows navigate, focus states on all interactive elements.
+GSAP animations set to reveal-once, no scroll-jacking, reduced motion respected via prefers-reduced-motion.
+
+Files
+New:
+
+src/components/SiteHeader.tsx, SiteFooter.tsx, PageHero.tsx, MediaLightbox.tsx
+src/lib/media.ts (gallery data with example names)
+src/app/services/page.tsx, src/app/about/page.tsx, src/app/gallery/page.tsx, src/app/our-work/page.tsx, src/app/contact/page.tsx
+
+Modified:
+
+src/app/page.tsx (rewritten as focused home page)
+src/app/services/[slug]/page.tsx (restyled with shared components)
+src/app/globals.css (nav restyle, new page styles, remove news/stacked-hero CSS)
+src/app/layout.tsx (metadata update if needed)
+
+Removed: News section, stacked 4-hero layout, duplicated inline headers/footers.
