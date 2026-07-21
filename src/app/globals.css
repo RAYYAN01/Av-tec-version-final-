@@ -14,7 +14,7 @@
   --blue-solid: #155ce0; /* AA-safe blue for white button text at normal size */
   --radius: 6px;
   --max: 1200px;
-  --nav-height: 220px;
+  --nav-height: 310px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* cinematic decelerate */
   --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-heading: var(--font-display), 'Playfair Display', Georgia, serif;
@@ -95,8 +95,8 @@ button, input, textarea, select { font: inherit; }
   display: flex; flex-direction: column; align-items: center;
   gap: 2px; text-decoration: none;
 }
-.header-logo { height: 88px; width: auto; object-fit: contain; }
-.is-scrolled .header-logo { height: 64px; }
+.header-logo { height: 230px; width: auto; object-fit: contain; }
+.is-scrolled .header-logo { height: 150px; }
 .header-tagline {
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.18em; color: var(--muted);
@@ -690,7 +690,7 @@ p { margin-top: 0; line-height: 1.7; }
 
   /* The nav overlay leaves flow on mobile, so the sticky bar is just the logo
      row — shrink the height reference used by the hero calc to match. */
-  :root { --nav-height: 108px; }
+  :root { --nav-height: 270px; }
 
   .services-grid { grid-template-columns: 1fr; }
   .service-card.large { grid-column: span 1; }
@@ -700,9 +700,9 @@ p { margin-top: 0; line-height: 1.7; }
 }
 
 @media (max-width: 640px) {
-  .header-logo { height: 60px; }
-  .is-scrolled .header-logo { height: 46px; }
-  :root { --nav-height: 88px; }
+  .header-logo { height: 120px; }
+  .is-scrolled .header-logo { height: 88px; }
+  :root { --nav-height: 160px; }
   .hero-slide-content h2 { font-size: clamp(1.8rem,7vw,2.5rem); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
