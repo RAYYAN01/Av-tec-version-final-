@@ -9,6 +9,7 @@
   --muted: #8b9bb4;
   --crimson: #cc0000;
   --crimson-accent: #ff4d4d; /* small-text accent — AA on dark bg where --crimson fails */
+  --gold: #D4AF37;
   --orange: #e8930c;
   --blue: #1a6dff;
   --blue-solid: #155ce0; /* AA-safe blue for white button text at normal size */
@@ -215,7 +216,7 @@ h2 { font-size: clamp(1.8rem,3.5vw,3rem); font-weight: 700; line-height: 1.1; ma
 h3 { font-size: clamp(1.1rem,2vw,1.5rem); font-weight: 600; line-height: 1.2; }
 p { margin-top: 0; line-height: 1.7; }
 
-.heading-crimson { color: var(--crimson); text-transform: uppercase; letter-spacing: 0.04em; }
+.heading-crimson { color: var(--gold); text-transform: uppercase; letter-spacing: 0.04em; }
 
 .btn-pill {
   display: inline-flex; align-items: center; gap: 8px;
@@ -278,7 +279,7 @@ p { margin-top: 0; line-height: 1.7; }
   border-top: 3px solid var(--crimson);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.diversification h2 { color: var(--crimson); }
+.diversification h2 { color: var(--gold); }
 .diversification p { color: var(--muted); max-width: 700px; margin: 0 auto; }
 
 /* ===== RENTAL & SALES FULL-BLEED ===== */
@@ -587,9 +588,9 @@ p { margin-top: 0; line-height: 1.7; }
 }
 .gx-tab::after {
   content: ''; position: absolute; bottom: 0; left: 50%;
-  width: 0; height: 3px; background: var(--crimson);
+  width: 0; height: 3px; background: var(--gold);
   border-radius: 2px;
-  box-shadow: 0 0 12px var(--crimson), 0 0 24px var(--crimson);
+  box-shadow: 0 0 12px var(--gold), 0 0 24px var(--gold);
   transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .gx-tab:hover {
@@ -598,11 +599,11 @@ p { margin-top: 0; line-height: 1.7; }
 }
 .gx-tab:focus-visible {
   outline: none;
-  color: var(--crimson);
+  color: var(--gold);
 }
 .gx-tab.is-active {
-  color: var(--crimson);
-  text-shadow: 0 0 24px rgba(204,0,0,0.4);
+  color: var(--gold);
+  text-shadow: 0 0 24px rgba(212,175,55,0.4);
 }
 .gx-tab.is-active::after {
   width: 100%;
@@ -788,7 +789,7 @@ p { margin-top: 0; line-height: 1.7; }
 
 /* ---- Services hub: divisions + card chips ---- */
 .division { max-width: var(--max); margin: 0 auto 56px; }
-.division-title { text-align: center; color: var(--crimson); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+.division-title { text-align: center; color: var(--gold); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
 .division-sub { text-align: center; color: var(--muted); margin-bottom: 32px; }
 .service-card .chip-row { margin-top: 12px; position: relative; z-index: 1; }
 .service-card .chip {
