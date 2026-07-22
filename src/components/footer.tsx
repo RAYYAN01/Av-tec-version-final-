@@ -32,7 +32,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <img className="footer-logo" src="/assets/images/logos/logo-web.png" alt="AV-TEC" width="200" height="65" />
+        <img className="footer-logo" src="/assets/images/logos/logo-web.png" alt="AV-TEC" width="64" height="65" />
         <nav className="footer-nav" aria-label="Footer navigation">
           {NAV_LINKS.map((l) => (
             <Link key={l.href} href={l.href}>{l.label}</Link>

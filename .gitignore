@@ -61,3 +61,5 @@ public/icons/
 
 # broken Git LFS pointer stubs with no real content locally (see AGENTS.md history)
 public/assets/videos/
+
+.vercel

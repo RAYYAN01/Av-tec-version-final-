@@ -39,8 +39,8 @@ export default function Header() {
             className="header-logo"
             src="/assets/images/logos/logo-web.png"
             alt="AV-TEC Audio Visual Technology"
-            width="220"
-            height="72"
+            width="180"
+            height="183"
           />
           <span className="header-tagline">Audio Visual & Event Technology Since 1992</span>
         </Link>
