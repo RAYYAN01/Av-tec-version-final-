@@ -2,8 +2,10 @@ import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata = {
-  title: 'Contact | AV-TEC',
+  title: 'Contact',
   description: 'Get in touch with AV-TEC for event technology, equipment rental, installations and technical support across India.',
+  alternates: { canonical: '/contact' },
+  openGraph: { url: '/contact', title: 'Contact | AV-TEC', description: 'Get in touch with AV-TEC for event technology, equipment rental, installations and technical support across India.' },
 };
 
 export default function ContactPage() {

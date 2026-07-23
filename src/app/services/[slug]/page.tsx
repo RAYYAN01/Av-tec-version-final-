@@ -12,7 +12,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const s = SERVICES[slug];
   if (!s) return {};
-  return { title: `${s.title} | AV-TEC`, description: s.intro.slice(0, 160) };
+  const description = s.intro.slice(0, 160);
+  return {
+    title: s.title,
+    description,
+    alternates: { canonical: `/services/${slug}` },
+    openGraph: { url: `/services/${slug}`, title: `${s.title} | AV-TEC`, description },
+  };
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -23,8 +29,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const relatedTestimonials = TESTIMONIALS.filter((t) => t.service === slug);
   const others = SERVICE_LIST.filter((x) => x.slug !== slug);
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: s.title,
+    description: s.intro,
+    provider: { '@type': 'LocalBusiness', name: 'AV-TEC', url: 'https://avtecevents.com' },
+    areaServed: 'IN',
+    url: `https://avtecevents.com/services/${slug}`,
+  };
+
   return (
     <div className="page-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       <PageHero eyebrow="Our Services" title={s.title} bg={s.hero} />
 
       {/* ═══ INTRO ═══ */}

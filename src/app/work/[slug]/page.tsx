@@ -12,7 +12,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const c = CASE_STUDIES.find((x) => x.slug === slug);
   if (!c) return {};
-  return { title: `${c.title} | AV-TEC`, description: c.challenge.slice(0, 160) };
+  const description = c.challenge.slice(0, 160);
+  return {
+    title: c.title,
+    description,
+    alternates: { canonical: `/work/${slug}` },
+    openGraph: { url: `/work/${slug}`, title: `${c.title} | AV-TEC`, description, images: c.heroImage ? [c.heroImage] : undefined },
+  };
 }
 
 export default async function WorkDetailPage({ params }: { params: Promise<{ slug: string }> }) {

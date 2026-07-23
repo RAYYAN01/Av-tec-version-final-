@@ -16,8 +16,10 @@ const DIVISIONS = [
 ];
 
 export const metadata = {
-  title: 'Services | AV-TEC',
+  title: 'Services',
   description: 'Audio, lighting, video & LED, trussing, installations, and technical consultancy for events across India.',
+  alternates: { canonical: '/services' },
+  openGraph: { url: '/services', title: 'Services | AV-TEC', description: 'Audio, lighting, video & LED, trussing, installations, and technical consultancy for events across India.' },
 };
 
 export default function ServicesPage() {

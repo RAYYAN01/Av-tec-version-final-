@@ -2,8 +2,10 @@ import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata = {
-  title: 'Rental Inquiry | AV-TEC',
+  title: 'Rental Inquiry',
   description: 'Rent professional sound, lighting, video and LED equipment — with delivery, setup and technical crew for events across India.',
+  alternates: { canonical: '/rental' },
+  openGraph: { url: '/rental', title: 'Rental Inquiry | AV-TEC', description: 'Rent professional sound, lighting, video and LED equipment — with delivery, setup and technical crew for events across India.' },
 };
 
 const EVENT_TYPES = ['Concerts', 'Weddings', 'Corporate', 'Festivals', 'Exhibitions', 'Medical Conferences'];

@@ -5,8 +5,10 @@ import { CASE_STUDIES } from '@/data/case-studies';
 import { TESTIMONIALS } from '@/data/testimonials';
 
 export const metadata = {
-  title: 'Our Work | AV-TEC',
+  title: 'Our Work',
   description: 'Proof of work — featured productions, marquee equipment, and client reviews from 30+ years of AV-TEC events.',
+  alternates: { canonical: '/work' },
+  openGraph: { url: '/work', title: 'Our Work | AV-TEC', description: 'Proof of work — featured productions, marquee equipment, and client reviews from 30+ years of AV-TEC events.' },
 };
 
 const STATS = [

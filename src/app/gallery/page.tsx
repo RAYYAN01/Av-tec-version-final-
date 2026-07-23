@@ -3,8 +3,10 @@ import GalleryExplorer from '@/components/GalleryExplorer';
 import { GALLERY_IMAGES, GALLERY_VIDEOS } from '@/data/gallery';
 
 export const metadata = {
-  title: 'Gallery | AV-TEC',
+  title: 'Gallery',
   description: 'Event photos, equipment setups, production reels and highlight videos from AV-TEC — filter by photos or videos.',
+  alternates: { canonical: '/gallery' },
+  openGraph: { url: '/gallery', title: 'Gallery | AV-TEC', description: 'Event photos, equipment setups, production reels and highlight videos from AV-TEC — filter by photos or videos.' },
 };
 
 export default function GalleryPage() {

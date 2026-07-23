@@ -3,8 +3,10 @@ import PageHero from '@/components/PageHero';
 import CountUp from '@/components/CountUp';
 
 export const metadata = {
-  title: 'About | AV-TEC',
+  title: 'About',
   description: 'AV-TEC — Audio Visual & Event Technology since 1992. Based in Bengaluru, serving events across the country.',
+  alternates: { canonical: '/about' },
+  openGraph: { url: '/about', title: 'About | AV-TEC', description: 'AV-TEC — Audio Visual & Event Technology since 1992. Based in Bengaluru, serving events across the country.' },
 };
 
 const STATS = [

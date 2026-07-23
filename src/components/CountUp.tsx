@@ -67,8 +67,9 @@ export default function CountUp({ value, duration = 2000 }: CountUpProps) {
   // tabular-nums keeps digit width fixed so the number doesn't jitter/reflow
   // as it counts (e.g. 9 -> 10 -> 100 stays visually stable).
   return (
-    <span ref={ref} style={{ fontVariantNumeric: 'tabular-nums' }}>
-      {display}
+    <span ref={ref}>
+      <span aria-hidden="true" style={{ fontVariantNumeric: 'tabular-nums' }}>{display}</span>
+      <span style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap' }}>{value}</span>
     </span>
   );
 }

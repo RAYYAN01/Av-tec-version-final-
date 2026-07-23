@@ -1,0 +1,13 @@
+{
+  "name": "AV-TEC | Audio Visual & Event Technology",
+  "short_name": "AV-TEC",
+  "description": "Professional audio visual and event technology solutions since 1992.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060d18",
+  "theme_color": "#060d18",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

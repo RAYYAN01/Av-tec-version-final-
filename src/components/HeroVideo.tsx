@@ -14,7 +14,7 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
   // full background clip before first paint; the poster covers the gap while
   // the video buffers. Matters most for large hero files on mobile data.
   return (
-    <video autoPlay muted loop playsInline preload="metadata" poster={poster}>
+    <video autoPlay muted loop playsInline preload="metadata" poster={poster} aria-hidden="true">
       <source src={src} type="video/mp4" />
     </video>
   );
